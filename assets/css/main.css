@@ -1810,6 +1810,8 @@ input, select, textarea {
 		text-decoration: none;
 		border-bottom: none;
 		position: relative;
+		align-items: center;
+		justify-content: center;
 	}
 
 		.icon:before {
@@ -2578,7 +2580,7 @@ input, select, textarea {
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		postiion: relative;
+		position: relative;
 		margin: -2.5em 0 0 -2.5em;
 	}
 
@@ -2887,12 +2889,20 @@ input, select, textarea {
 			}
 
 				#header nav ul li {
+					
 					display: block;
 					padding: 0;
 				}
 
 					#header nav ul li a {
-						display: block;
+						display: -moz-flex;
+						display: -webkit-flex;
+						display: -ms-flex;
+						display: flex;
+						-moz-align-items: center;
+						-webkit-align-items: center;
+						-ms-align-items: center;
+						align-items: center;
 						position: relative;
 						height: 3em;
 						line-height: 3em;

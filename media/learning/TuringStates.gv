@@ -1,0 +1,80 @@
+digraph G {
+	graph [layout=neato]
+
+	node [style=filled shape=circle size=10]
+	edge [arrowhead=none len=1.6] //len controls spacing of nodes
+
+	f [label="f state"]
+	l [label="l state"]
+	halt [label="halt"]
+
+	{
+		node [style=dotted color=blue line=dotted shape=rect]
+
+		// code block 1
+		l37 [label=" read: ( \r write: s \r move: l \r"]
+		l38 [label=" read: ) \r write: zero \r move: - \r"]
+		l39 [label=" read: - \r write: one \r move: - \r"]
+		l40 [label=" read: y \r write: y \r move: l \r"]
+
+		// code block 2
+		l42 [label=" read: ) \r write: y \r move: r \r"]
+		l43 [label=" read: ( \r write: o \r move: l \r"]
+		l44 [label=" read: - \r write: zero \r move: - \r"]
+
+		// code block 3
+		l46 [label=" read: o \r write: z \r move: l \r"]
+		l47 [label=" read: s \r write: y \r move: - \r"]
+		l48 [label=" read: z \r write: y \r move: r \r"]
+		l49 [label=" read: y \r write: z \r move: l \r"]
+
+	}
+
+	// code block 1
+	start -> f	[arrowhead=normal len=1.2]
+
+	f -> l37
+	l37 -> l 	[arrowhead=normal]
+
+	f -> l38
+	l38 -> halt 	[arrowhead=normal] 
+
+	f -> l39
+	l39 -> halt 	[arrowhead=normal]
+
+	f -> l40 
+	l40 -> f 	[arrowhead=normal] 
+
+	// code block 2
+	l -> l42
+	l42 -> l	[arrowhead=normal]
+
+	l -> l43
+	l43 -> l	[arrowhead=normal]
+
+	l -> l44
+	l44 -> halt	[arrowhead=normal]
+
+	// code block 3
+	l -> l46
+	l46 -> l	[arrowhead=normal]
+
+	l -> l47
+	l47 -> f	[arrowhead=normal]
+
+	l -> l48
+	l48 -> l	[arrowhead=normal]
+
+	l -> l49
+	l49 -> l	[arrowhead=normal]
+
+	{/* These invisible edges are for layout purposes only */
+
+		edge [color=none]
+
+		l49 -> l48 [len=5]
+		l40 -> l49 [len=3]
+		l38 -> l
+		l37 -> l47
+	}
+}

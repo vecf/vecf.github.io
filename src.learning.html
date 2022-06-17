@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>title</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="template.css" />
+</head>
+<body>
+<h1 id="introduction">Introduction</h1>
+<p>Coming to robotics from a mechanical engineering background, I found myself wanting to know more about computation, computer science and software engineering. The projects shown here summarize some of my self-learning experiences.</p>
+<h1 id="projects">Projects</h1>
+<h2 id="linux-from-scratch-lfs">Linux From Scratch (LFS)</h2>
+<p>In this project you download and compile all the separate pieces to assemble your own bootable Linux distro. No coding is done in this project, but you need to be able to follow instructions, know how to debug and know a bit about UNIX. I managed to finish the project and registered on their database <a href="http://www.linuxfromscratch.org/cgi-bin/lfscounter.php">here</a>. My LFS id is 28548.</p>
+<h2 id="modification">6502 modification</h2>
+<p>The 6502 is praised for it’s simplicity and remembered for the impact it had on personal computing, so I decided to work though this tiny e-book I found called <a href="https://skilldrick.github.io/easy6502/">Easy 6502</a>. After reading the little book, I modified the snake game presented there to reinforce what I had learnt. The modifications make <code>snake</code>’s stomach contents visible. The code can be found on my GitHub <a href="https://github.com/vecf/urWu8Snake">here</a> and the video below shows a snippet of the gameplay.</p>
+<video width="320" height="240" alt="You Are What You Ate Snake Game"
+controls>
+<source src="media/learning/urwu8.mp4" type="video/mp4">
+</video>
+<h2 id="from-nand-to-tetris">From NAND to Tetris</h2>
+<p>After playing with 6502, I was confident enough to try <a href="https://www.nand2tetris.org/">Nand2Tetris</a>. The subtitle “Building a Modern Computer From First Principles”, is actually just the first half of the course! In part 1, using only the <a href="https://en.wikipedia.org/wiki/NAND_gate">NAND</a> gate and <a href="https://en.wikipedia.org/wiki/Flip-flop_%28electronics%29">DFF</a>’s, you build the chips to create the <code>Hack</code> computer: an educational (<a href="https://en.wikipedia.org/wiki/Minimal_instruction_set_computer">MISC</a>) architecture. This is done in an educational hardware description language provided with pre-written tests to make development incremental. By the end of the course you write your own assembler for <code>Hack</code> in the programming language of your choice. I did it in <code>Python</code>.</p>
+<p>In part 2, you build a compiler targeting <code>Hack</code> for the <code>Jack</code> object-oriented programming language which the authors created: I stuck with <code>Python</code>. You also get to implement any project of your choice in the <code>Jack</code> language to learn how it works. Typically, students go for <code>Tetris</code>, hence the name. I re-implemented <code>snake</code>. In the final project, you implement the system calls provided by a bare-bones “operating system” in <code>Jack</code>.</p>
+<p>The clip below shows the hardware emulator running my <code>snake</code> clone. When loading snake without the system binaries, the emulator offers to provide built-in versions. Then, when loading a version with snake and the system binaries, the emulator immediately loads the program.</p>
+<p>Instead of the direction keys I used <code>vi</code> keys because I was the target audience of the game. You set the speed and length of snake at the beginning of the game to help debug during development. I implemented playing the game at different sizes as a programming exercise, this is not demonstrated in the video.</p>
+<video width="320" height="240" alt="nand2tetris demo" controls>
+<source
+src="media/learning/n2tdemo.mp4" type="video/mp4">
+</video>
+<h2 id="mit-6.004---computational-structures">MIT 6.004 - Computational Structures</h2>
+<p>I worked through the worksheets and labs of the 2017 version of this <a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/">MIT ocw course</a> together with its <a href="https://computationstructures.org">companion website</a>. Computational structures explores important topics that N2T skips: models of computation, cost/performance trade-offs, virtual memory, caching, memory hierarchy, interrupts, scheduling, pipelining and concurrency, compiler optimizations.</p>
+<p>There are three major challenges in this course, completed using instructor developed tools:</p>
+<ol type="1">
+<li>Programming a Turing machine to check if parentheses are balanced using the <code>TMSim</code> Turing machine simulator.</li>
+<li>Build a minimal <a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer">RISC</a> processor called ‘Beta’ using the <code>Jade</code> circuit simulator.</li>
+<li>Modify a teaching operating system called <code>TinyOS</code> in the <code>BSIM</code> ‘Beta’ emulator.</li>
+</ol>
+<p>The companion website implements all these tools using browser technologies. To see my answers to the labs in your browser:</p>
+<ol type="1">
+<li>Right-click and select ‘Save Link as …’ on my <a href="media/learning/saved_state_vecf.json">saved_state.json file</a></li>
+<li>Navigate <a href="https://computationstructures.org/exercises/fsm/lab.html">here</a>, scroll down and upload the file.<br />
+</li>
+<li>You can then browse to any of the labs and my answers should display.</li>
+</ol>
+<h3 id="parenthesis-checking-turing-machine">Parenthesis Checking Turing Machine</h3>
+<p>The video below shows a Turing machine programmed to halt on a <code>1</code> if the parenthesis on the input tape are balanced and <code>0</code> if they are not. Doing it with only two states gets you full marks. This was the most challenging part of the <a href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a> <a href="https://computationstructures.org/exercises/fsm/lab.html#">lab</a>. To see it in action, scroll down and click ‘Open <code>TMSim</code> in a new window’, click ‘TMSim assemble’ and then ‘Checkoff’.</p>
+<video width="320" height="240" alt="Turing Paren Checker"
+controls>
+<source src="media/learning/TMSIM.mp4" type="video/mp4">
+</video>
+<p>To do it in just two states, I developed the diagram shown below. The <em>f</em> <strong>state</strong> represents ‘found’ and <em>l</em> is for ‘looking’. The <em>o</em> <strong>symbol</strong> is for ‘open’ and <em>s</em> is for ‘start’. Symbols <em>z</em> and <em>y</em> are arbitrarily named. The <em>l</em> <strong>motion</strong> means move the <strong>tape</strong> left, <em>r</em> is right and <em>-</em> means don’t move. This corresponds to the language of TMSim as seen in the video.</p>
+<p><img src="media/learning/TuringStates.png" /></p>
+<h3 id="build-and-optimize-the-beta-cpu">Build and Optimize the ‘Beta’ CPU</h3>
+<p>The final lab is <a href="https://computationstructures.org/exercises/dp/lab.html">Optimizing the Beta</a> that you built in the previous labs. Here a ‘Benmark’ of 20 is considered very doable and 40 requires considerable insight and investment of time. Though not considered a course requirement, I tried to pipeline my design but failed. See the lab for more details. My final working design is tested in <code>/user/test_v7</code> and got a benchmark of 34.66. You can also inspect the <code>Beta</code> for this test looking at <code>/user/beta_6</code> and descending into its sub-components.</p>
+<p><img src="media/learning/beta.png" /></p>
+<h3 id="modify-tinyos">Modify TinyOS</h3>
+<p>The <a href="https://computationstructures.org/exercises/tinyos/lab.html">TinyOS lab</a> provides a minimal time-sharing OS written in <code>Beta</code> assembly. The provided code has two user processes: one periodically prints a counter value and the other takes user input and converts it to <a href="https://en.wikipedia.org/wiki/Pig_Latin">Pig Latin</a>. There are three design problems in this lab:</p>
+<ol type="1">
+<li>Initially, the Pig Latin translator doesn’t work. Once the kernel to user memory mapping is fixed, translations are printed at the console.</li>
+<li>Add a mouse device driver and print the coordinates of user clicks.</li>
+<li>Fix interleaving text at the console due to concurrent access by the user processes by implementing locking primitives.</li>
+</ol>
+<p>BSIM has a schematic view that shows the assembly code being executed on the hardware and an editor mode that follows along line by line as the program executes. The video below showcases these features.</p>
+<video width="320" height="240" alt="BSIM Feature Demo"
+controls>
+<source src="media/learning/BSIMfeatures.mp4" type="video/mp4">
+</video>
+<p>The next video shows the end result of the modifications done in the TinyOS lab.</p>
+<video width="320" height="240" alt="TinyOS Modifications"
+controls>
+<source src="media/learning/TinyOS.mp4" type="video/mp4">
+</video>
+<h2 id="ongoing-studies">Ongoing Studies</h2>
+<p>I also started studying operating systems with materials from <a href="https://pdos.csail.mit.edu/6.828/2021/xv6.html">here</a>, <a href="https://pages.cs.wisc.edu/~remzi/OSTEP/">here</a> and <a href="https://ops-class.org/">here</a>, and plan to continue when I have more time.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I learnt a lot doing these projects and feel that I have a solid understanding of computation. It is not so much of mystery to me anymore how my code gets executed! I am confident that these lessons will help me to be a better software engineer.</p>
+</body>
+</html>

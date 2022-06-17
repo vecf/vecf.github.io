@@ -2912,8 +2912,9 @@ input, select, textarea {
 						border: 0;
 						font-size: 0.8em;
 						font-weight: 900;
-						letter-spacing: 0.35em;
+						letter-spacing: 0.15em;
 						text-transform: uppercase;
+						white-space: nowrap;
 					}
 
 					#header nav ul li a[href="#menu"] {

@@ -206,7 +206,7 @@ input, select, textarea {
 		line-height: 1.5;
 		margin: 0 0 2em 0;
 		text-transform: uppercase;
-		letter-spacing: 0.35em;
+		letter-spacing: 0.05em;
 	}
 
 		h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2873,7 +2873,7 @@ input, select, textarea {
 			top: 0em;
 			z-index: 10000;
 			width:100%;
-			background-color: rgba(255, 255, 255, 0.87);
+			background-color: rgba(196, 196, 196, 0.87);
 		}
 
 			#header nav ul {
@@ -2909,7 +2909,7 @@ input, select, textarea {
 						height: 3em;
 						line-height: 3em;
 						padding: 0 1.5em;
-						background-color: rgba(255, 255, 255, 0.0);
+						background-color: rgba(255, 255, 255, 0);
 						border-radius: 4px;
 						border: 0;
 						font-size: 0.8em;

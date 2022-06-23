@@ -59,31 +59,43 @@
 		<div id="main">
 			<div class="inner">
 				<h1 id="description">Introduction</h1>
-				<p>This article is a run through of my <a href="./media/masters/thesis.pdf">master’s thesis</a> from which <a
-						href="https://doi.org/10.1007/s11370-021-00350-1">this publication</a> is derived. This work deals with
-					coordinating multiple robots in online order fulfilment systems.</p>
-				<h1 id="visiting-pebbles-on-rectangular-grids---the-ideas">Visiting Pebbles on Rectangular Grids - The Ideas
+
+				<p>This page is a run through of my <a
+				href="./media/masters/thesis.pdf">master’s thesis</a> from which <a
+				href="https://doi.org/10.1007/s11370-021-00350-1">this publication</a>
+				is derived and deals with coordinating multiple robots in online
+				order fulfilment systems.</p>
+
+				<h1 id="visiting-pebbles-on-rectangular-grids---the-ideas">Visiting Pebbles on Rectangular Grids - The Ideas.
 				</h1>
 
 				<p>The name was inspired by <a href="https://doi.org/10.1109/SFCS.1984.715921">Kornhauser et al</a>’s work
 					entitled <em>Coordinating Pebble Motion On Graphs</em> (PMOG). <strong>Abstractly</strong>, pebbles
-					represent agents requiring access to shared resources. <a
-						href="https://en.wikipedia.org/wiki/Graph_theory">Graph</a> nodes represent the shared resources.
+					represent agents requiring access to shared resources represented by <a
+						href="https://en.wikipedia.org/wiki/Graph_theory">Graph</a> nodes.
 					Specifically, only one pebble can access a node at a time. The goal of PMOG is to determine whether a
 					target configuration is reachable from the initial arrangement of pebbles and provide the sequence of
-					required moves if it is.</p>
+					required moves in this case.</p>
 
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p><strong>Concretely</strong>, PMOG is applicable in robotic warehousing systems: the pebbles represent
-							robots that access physical locations. This example is not as far fetched as it sounds: thousands of
-							robots are delivering packages from storage to packing stations in warehouses every day and Kiva Systems
-							is the company that pioneered their use. It’s also not new: Staples was the first company to go live with
-							a Kiva system in 2006! A 2016 report estimated that Amazon was operating ~30k units. The image below shows
-							the layout of a typical robotic distribution center.</p>
-						<p>Robots pick up and deliver shelves of inventory to pick/pack workers in the Kiva system as shown below. 
-							See the <a href="https://dl.acm.org/doi/abs/10.5555/2908675.2908681">image source</a> for more information.
-						</p>
+
+						<p><strong>Concretely</strong>, PMOG is applicable in robotic
+						warehousing systems: the pebbles represent robots that access
+						physical locations. This example is not as far fetched as it sounds:
+						thousands of robots are delivering packages from storage to packing
+						stations in warehouses every day and Kiva Systems is the company
+						that pioneered their use. It’s also not new: Staples was the first
+						company to go live with a Kiva system in 2006! A 2016 report
+						estimated that Amazon was operating ~30k units and by 2022 <a
+						href="https://www.aboutamazon.com/news/operations/10-years-of-amazon-robotics-how-robots-help-sort-packages-move-product-and-improve-safety">
+						Amazon reported</a> 520,000 world-wide. The next two images show the layout
+						of a typical robotic distribution center and the robots they employ.
+						Robots pick up and deliver shelves of inventory to pick/pack
+						workers. See the <a
+						href="https://dl.acm.org/doi/abs/10.5555/2908675.2908681">image
+						source</a> for more information.  </p>
+
 					</div>
 					<div class="col-2 col-12-medium">
 							<img class="image fit" src="media/masters/kivaLayout.png"
@@ -97,28 +109,37 @@
 
 				</div>
 
-				<p>PMOG generalizes and solves a fundamental problem. However, the constraints could be relaxed for this
-					application: robots only need to <strong>visit</strong> destination nodes, they don’t need to be in a
-					pre-defined end configuration at the same time. <strong>Hence the ‘visiting’ part of the title.</strong>
-				</p>
-				<p>This relaxation has implications for the feasibility check of the original PMOG: it’s easy to come up
-					with feasible visiting PMOG cases that are infeasible in PMOG. Since warehouses are rectangular
-					workspaces, my work is restricted to graphs made up of <a
-						href="https://en.wikipedia.org/wiki/Biconnected_graph">bi-connected</a> rectangular grids. As long as
-					there is at least one open node and the graph is bi-connected, every destination assignment is feasible in
-					<strong>Visiting Pebble Motion on Rectangual Grids.</strong></p>
+				<p>PMOG generalizes and solves a fundamental problem. However, the
+				constraints could be relaxed for this application: robots only need to
+				<strong>visit</strong> destination nodes, they don’t need to be in a
+				pre-defined end configuration at the same time. <strong>Hence the
+				‘visiting’ part of the title.</strong> This relaxation has implications
+				for the feasibility check of the original PMOG: it’s easy to come up
+				with feasible visiting PMOG cases that are infeasible in PMOG. Since
+				warehouses are rectangular workspaces, my work is restricted to graphs
+				made up of <a
+				href="https://en.wikipedia.org/wiki/Biconnected_graph">bi-connected</a>
+				rectangular grids. As long as there is at least one open node and the
+				graph is bi-connected, every destination assignment is feasible in
+				<strong>Visiting Pebble Motion on Rectangual Grids.</strong></p>
 
-				<h1 id="the-implementation">The Implementation - a First Try</h1>
+				<h1 id="the-implementation">The Implementation - a First Try.</h1>
 				<div class="row">
 					<div class="col-8 col-12-medium">
+
 						<p>Let robots find their way using something like <a
-								href="https://en.wikipedia.org/wiki/A*_search_algorithm">A*</a>, if another robot gets in the way,
-							simply wait until the node is free again. Using the <a
-								href="https://research.csc.ncsu.edu/alphabetsoup/">Alphabet Soup</a> multi-robot simulator, I modified
-							the default behaviour to strictly adhere to the underlying navigation graph. Then, I only allowed robots
-							to enter a node if it is empty. The snapshot below shows what it looked like: the robots are pink,
-							replenishing stations are blue, shelves are purple and packing stations are green. The shelves contain
-							letters and the parcels being packed are words from a dictionary.</p>
+						href="https://en.wikipedia.org/wiki/A*_search_algorithm">A*</a>, if
+						another robot gets in the way, simply wait until the node is free
+						again. Using the <a
+						href="https://research.csc.ncsu.edu/alphabetsoup/">Alphabet Soup</a>
+						multi-robot simulator, I modified the default behaviour to strictly
+						adhere to the underlying navigation graph. Then, I only allowed
+						robots to enter a node if it is empty. The next video shows what it
+						looks like: the robots are pink, replenishing stations are blue,
+						shelves are purple and packing stations are green. In this
+						simulator, the shelves contain letters and the parcels being packed
+						are words from a dictionary.</p>
+
 					</div>
 					<div class="col-4 col-12-medium">
 						<video width="100%" alt="Alphabet Soup Simulation of Distribution Centre" controls>
@@ -143,30 +164,31 @@
 				</p>
 
 
-				<h1 id="a-step-back---dealing-with-deadlocks-one-at-a-time.">A step back - dealing with deadlocks… one at a
-					time.</h1>
+				<h1 id="a-step-back---dealing-with-deadlocks-one-at-a-time.">A Step Back - Dealing with Deadlocks… One at a
+					Time.</h1>
 
+
+				<div class="row"> <div class="col-8 col-12-medium"> <p>Let’s focus on a
+				single stuck robot and assume it can order others to move out of its
+				way. A <a
+				href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth First
+				Search</a> (BFS) for the first open node reveals the shortest path of
+				moves to clear the blocked node (i.e the ‘swap path’). The process is
+				shown in the following animation. In some cases, robots start in their
+				target positions, or reach them by moving out of the way for others,
+				this is a <a href="https://en.wikipedia.org/wiki/Serendipity">fortunate
+				accident</a>.</p> </div> <div class="col-4 col-12-medium"> <img
+				class="image fit" src="media/masters/algo.gif" alt="Visiting Pebble
+				Motion Algorithm Demonstration" /> </div> </div>
 
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p>Let’s focus on a single robot that is stuck and assume it can order others to move out of its way. A <a
-								href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth First Search</a> (BFS) for the first
-							open node reveals the shortest path of moves to clear the blocked node (i.e the ‘swap path’). The process
-							is shown below. In some cases, robots start in their target positions, or reach them by moving out of the
-							way for others, this is a <a href="https://en.wikipedia.org/wiki/Serendipity">fortunate accident</a>.</p>
-					</div>
-					<div class="col-4 col-12-medium">
-							<img class="image fit" src="media/masters/algo.gif"
-								alt="Visiting Pebble Motion Algorithm Demonstration" />
-					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-8 col-12-medium">
-						<p>The video below shows a simulator written in Java to develop the deadlock resolution strategy. Square
+						<p>The video below shows a simulator I wrote in Java to develop the deadlock resolution strategy. Square
 							brackets represent grid positions and numbers represent robots. Each node is the target of the robot with
 							the same number and the grid is numbered in row major order, meaning if every robot were in its
 							destination position, it would look like this:</p>
+
 					</div>
 					<div class="col-4 col-12-medium center">
 							<img class="image fit" src="media/masters/rowmajor.png"
@@ -188,30 +210,35 @@
 						</video>
 					</div>
 				</div>
-
-
-
-
-
-				<h1 id="a-jump-forward---dealing-with-deadlocks-many-at-a-time.">A jump forward - dealing with deadlocks… many
-					at a time.</h1>
+				
+				<h1 id="a-jump-forward---dealing-with-deadlocks-many-at-a-time.">A Jump Forward - Dealing with Deadlocks… Many
+					at a Time.</h1>
 
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p>Simultaneous motion is achieved by assigning a priority to each robot and defining a round consisting of
-							two phases. In a first phase, robots instruct each other to move along the swap path determined using BFS.
-							A robot sends instructions either to itself or the robot at the tip of the swap path. Robots send
-							instructions to themselves in two scenarios: 1) to move to the next node, and 2) to remain in place while
-							ordering others to move. This ensures that high priority robots decrease their distance from their target
-							monotonically, which in turn ensures that progress is being made. Idle robots don’t send instructions, but
-							receive them. At the end of this phase, each robot selects the highest priority instruction and forwards
-							it as a node access request, maintaining the original sender’s priority.</p>
-						<p>In the second phase, <strong>nodes</strong> select the highest priority request to notify successful
-							requesters and these robots move. Then, all robots empty their instruction queues. This ends the round and
-							the process repeats until all tasks are complete, at which point no one sends instructions and everything
-							stops.</p>
-						<p>In the video below, the same task assignments are used as before. Lower numbers mean higher priorities,
-							making life hard for robot 10!</p>
+
+						<p>Simultaneous motion is achieved by assigning a priority to each
+						robot and defining a round consisting of two phases. In a first
+						phase, robots instruct each other to move along the swap path
+						determined using BFS.  A robot sends instructions either to itself
+						or the robot at the tip of the swap path. Robots send instructions
+						to themselves in two scenarios: 1) to move to the next node, and 2)
+						to remain in place while ordering others to move. This ensures that
+						high priority robots decrease their distance from their target
+						monotonically, which in turn ensures that progress is being made.
+						Idle robots don’t send instructions, but receive them. At the end of
+						this phase, each robot selects the highest priority instruction and
+						forwards it as a node access request, maintaining the original
+						sender’s priority.</p>
+						
+						<p>In the second phase, <strong>nodes</strong> select the highest
+						priority request to notify successful requesters and these robots
+						move. Then, all robots empty their instruction queues. This ends the
+						round and the process repeats until all tasks are complete, at which
+						point no one sends instructions and everything stops. In the next
+						video, the same task assignments are used as before. Lower numbers
+						mean higher priorities, making life hard for robot 10!</p>
+						
 					</div>
 					<div class="col-4 col-12-medium">
 						<video width="100%" controls>
@@ -220,35 +247,45 @@
 					</div>
 				</div>
 
-				<h1 id="going-all-the-way---eliminating-the-synchronous-assumption.">Going all the way - eliminating the
-					synchronous assumption.</h1>
+				<h1 id="going-all-the-way---eliminating-the-synchronous-assumption.">Going All the Way - Eliminating the
+					Synchronous Assumption.</h1>
 
-				<p>So far actions were synchronized into rounds and robots/nodes knew when the transitions occur. However, the
-					real world is asynchronous and these timings aren’t known beforehand. Unavoidable variances mean that some
-					robots are faster than others and it is wasteful to synchronize node transitions into fixed time slices. But,
-					without a centralized synchronization signal, robots don’t know when to replan and nodes don’t know when to
-					grant access.</p>
-				<p>The answer to reducing this waste is to notify robots when their instructions have failed. Nodes notify all
-					requesters when access is granted, and requesters react accordingly. Failed requests are relayed by the
-					requesters to their originators. Instructed robots don’t know whether their instruction queues already contain
-					the highest priority instruction they will get, so they immediately request what they have, and update
-					accordingly when new requests arrive by withdrawing/resubmitting requests.</p>
-
+				<p>So far actions were synchronized into rounds and robots/nodes knew
+				when transitions occur. However, the real world is asynchronous and
+				these timings aren’t known beforehand. This could be fixed by
+				synchronizing these moves into fixed time slices. However, unavoidable
+				variances mean that some robots are faster than others making
+				synchronization wasteful, and without a centralized synchronization
+				signal, robots don’t know when the synchronization barriers occur so
+				that they can replan or grant access.</p>
+				
+				<p>The answer to reducing this waste is to notify robots when their
+				instructions have failed. Nodes notify all requesters when access is
+				granted, and requesters react accordingly. Failed requests are relayed
+				by the requesters to their originators. Instructed robots don’t know
+				whether their instruction queues already contain the highest priority
+				instruction they will get, so they immediately request what they have,
+				and update accordingly when new requests arrive by
+				withdrawing/resubmitting requests.</p>
+				
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p>Getting the programming right is <strong>really difficult</strong>. Instead of wading through the gory
-							details, let’s see it in action! The grid in the video below has tasks assigned in row major order. Robots
-							indicate completion by highlighting themselves in red and indicate node visits by marking them with a
-							purple circle. These robots have randomly initialized acceleration and speed limits to simulate real-world
-							variances.</p>
-						<p>Note that any task assignment is allowed. In fact, robots can even all have the same target node as shown
-							below. In fact, this is an example of an infeasible PMOG assignment.</p>
-					</div>
-					<div class="col-2 col-12-medium">
-						<video width="100%" controls>
-							<source src="media/masters/async/rowmajor.mp4" type="video/mp4">
-						</video>
 
+						<p>Getting the details right is <strong>really difficult</strong>
+						and is available in my <a
+						href="./media/masters/thesis.pdf">thesis</a>.  Instead of slogging
+						through that, let’s see it in action! In the next videos, robots
+						indicate completion by highlighting themselves in red and indicate
+						node visits by marking them with a purple circle. These robots have
+						randomly initialized acceleration and speed limits to simulate
+						real-world variances. The first video has tasks assigned in
+						row-major order, however, any task assignment is allowed. In fact,
+						robots can even all have the same target node as shown in the second
+						video which is an example of an assignment that is infeasible in PMOG.</p>
+						</div> <div class="col-2 col-12-medium"> <video width="100%"
+						controls> <source src="media/masters/async/rowmajor.mp4"
+						type="video/mp4"> </video>
+						
 					</div>
 					<div class="col-2 col-12-medium">
 						<video width="100%" controls>
@@ -260,10 +297,10 @@
 				<div class="row">
 					<div class="col-8 col-12-medium">
 
-						<p>So far only single tasks were assigned. Multiple tasks can be assigned by setting the robot’s priority
-							equal to the task number. Even if one task is delayed by many others, as overriding tasks complete, the
+						<p>So far only single tasks were assigned. Multiple tasks can be assigned by setting each robot’s priority
+							equal to their task number. Even if one task is delayed by many others, as overriding tasks complete, the
 							blocked task’s priority effectively raises until it overrides every other robot. The video below shows
-							robots cyclically completing multiple random node visits.</p>
+							robots cyclically completing multiple random node visits without marking their destinations.</p>
 
 					</div>
 					<div class="col-4 col-12-medium">
@@ -274,28 +311,34 @@
 					</div>
 				</div>
 
-				<h1 id="a-final-test">A Final Test</h1>
-				<div class="row">
-					<div class="col-8 col-12-medium">
-						<p>Using the random cyclic task assignments, the figure below shows the number of completed missions versus
-							number of robots for one hour of simulated time, 144 grid nodes and up to 143 robots. The legend indicates
-							experiments for grids with different aspect ratios.</p>
-						<p>The maximum number of completed tasks always occurs for around 30 robots independent of the grid aspect
-							ratio. The simulations were run headless and no deadlocks or collisions occurred, that’s 1001 flawless
-							simulations!</p>
-					</div>
-					<div class="col-4 col-12-medium">
-							<img class="image fit" src="media/masters/tasks_completed.png"
-								alt="Completed tasks vs number of robots and board" />
-					</div>
-				</div>
-
+				<h1 id="a-final-test">A Final Test</h1> <div class="row"> <div
+				class="col-8 col-12-medium"> 
+				
+				<p>Using random cyclic task assignments, the next figure shows the
+				number of completed missions versus number of robots for one hour of
+				simulated time, 144 grid nodes and up to 143 robots. The legend
+				indicates experiments for grids with different aspect ratios. The
+				maximum number of completed tasks always occurs for around 30 robots
+				independent of the grid aspect ratio. The simulations were run headless
+				and no deadlocks or collisions occurred, that’s 1001 flawless
+				simulations!</p> 
+				
+			</div> <div class="col-4 col-12-medium"> <img
+				class="image fit" src="media/masters/tasks_completed.png" alt="Completed
+				tasks vs number of robots and board" /> </div> </div>
+				
 				<h1 id="conclusion">Conclusion</h1>
-				<p>The relaxations on PMOG allows robots to deliver payloads without collisions or deadlocks, in continuous
-					asynchronous time and require comparatively little computation. These were the extents of my research scope
-					and there is much room for improvement in terms of optimality. However, I am proud of what I achieved and am
-					glad to have made a contribution to robotics research, however big or small.</p>
 
+				<p>The relaxations on PMOG allows robots to deliver payloads without
+				collisions or deadlocks, in continuous asynchronous time and require
+				comparatively little computation. The computation can also easily be
+				distributed among multiple agents without requiring central
+				coordination. These were the extents of my research scope and there is
+				much room for improvement in terms of optimality. However, coordinating
+				<em>n</em> robots with only one open spot to move is no mean feat and I
+				am proud of what I achieved in this work.
+				</p>
+				
 			</div>
 		</div>
 

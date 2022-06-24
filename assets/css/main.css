@@ -3354,3 +3354,18 @@ input, select, textarea {
   padding: 40px;
   margin: 15px;
 }
+
+/* Video */
+
+video.centered {
+	margin: 0em auto 2em;
+	display: block;
+}
+
+.single {
+	width: 85%;
+}
+
+.full {
+	width: 100%;
+}

@@ -59,9 +59,13 @@
 		<div id="main">
 			<div class="inner">
 				<h1 id="introduction">Introduction</h1>
-				<p>Coming to robotics from a mechanical engineering background, I found myself wanting to know more about
-					computation, computer science and software engineering. The projects shown here summarize some of my
-					self-learning experiences.</p>
+
+				<p>Coming to robotics from a mechanical engineering background, I found
+				myself wanting to know more about how computers acutally work and what
+				happens under the hood of the software we use every day. The projects shown here
+				summarize some of my self-learning experiences to satisfy this
+				curiosity.</p>
+				
 				<h1 id="projects">Projects</h1>
 				<h2 id="linux-from-scratch-lfs">Linux From Scratch (LFS)</h2>
 				<p>In this project you download and compile all the separate pieces to assemble your own bootable Linux distro.
@@ -76,11 +80,11 @@
 								href="https://skilldrick.github.io/easy6502/">Easy 6502</a>. After reading the little book, I modified
 							the snake game presented there to reinforce what I had learnt. The modifications make <code>snake</code>’s
 							stomach contents visible. The code can be found on my GitHub <a
-								href="https://github.com/vecf/urWu8Snake">here</a> and the video below shows a snippet of the gameplay.
+								href="https://github.com/vecf/urWu8Snake">here</a> and the next video shows a snippet of the gameplay.
 						</p>
 					</div>
 					<div class="col-2 col-12-medium">
-						<video width="100%" alt="You Are What You Ate Snake Game" controls>
+						<video class="centered full" alt="You Are What You Ate Snake Game" controls>
 							<source src="media/learning/urwu8.mp4" type="video/mp4">
 						</video>
 					</div>
@@ -96,77 +100,103 @@
 								href="https://en.wikipedia.org/wiki/Minimal_instruction_set_computer">MISC</a>) architecture. This is
 							done in an educational hardware description language provided with pre-written tests to make development
 							incremental. By the end of the course you write your own assembler for <code>Hack</code> in the
-							programming language of your choice. I did it in <code>Python</code>.</p>
+							programming language of your choice.</p>
+
 						<p>In part 2, you build a compiler targeting <code>Hack</code> for the <code>Jack</code> object-oriented
-							programming language which the authors created: I stuck with <code>Python</code>. You also get to
+							programming language which the authors created. My compiler and assembler were both written in <code>Python</code>. You also get to
 							implement any project of your choice in the <code>Jack</code> language to learn how it works. Typically,
-							students go for <code>Tetris</code>, hence the name. I re-implemented <code>snake</code>. In the final
+							students go for <code>Tetris</code>, hence the name Nand2Tetris, but I chose to implement <code>snake</code>. In the final
 							project, you implement the system calls provided by a bare-bones “operating system” in <code>Jack</code>.
 						</p>
 
 				<div class="row">
 					<div class="col-8 col-12-medium">
-				<p>The clip below shows the hardware emulator running my <code>snake</code> clone. When loading snake without
-					the system binaries, the emulator offers to provide built-in versions. Then, when loading a version with snake
-					and the system binaries, the emulator immediately loads the program.
-					Instead of the direction keys I used <code>vi</code> keys because I was the target audience of the game. You
-					set the speed and length of snake at the beginning of the game to help debug during development. I implemented
-					playing the game at different sizes as a programming exercise, this is not demonstrated in the video.</p>
+
+						<p>The next clip
+							shows the hardware emulator running my <code>snake</code> clone. When
+							loading snake without the self-written OS binaries, the emulator offers
+							to provide built-in versions. Then, when loading a version with snake
+							and the system binaries, the emulator immediately loads the program.
+							Instead of the direction keys I used <a href="https://en.wikipedia.org/wiki/Vi"><code>vi</code></a> keys because
+							I was the target audience of the game. You can set the speed and length
+							of snake at the beginning of the game to help debug during development.
+							I also implemented playing the game at different sizes as a programming
+							exercise, though this is not demonstrated in the video.</p>
+
 					</div>
 					<div class="col-4 col-12-medium">
-						<video width="100%" alt="nand2tetris demo" controls>
+				
+						<video class="centered full" alt="nand2tetris demo" controls>
 							<source src="media/learning/n2tdemo.mp4" type="video/mp4">
 						</video>
+				
 					</div>
-				</div>
+			
+			</div>
+				
+				
+				<h2 id="mit-6.004---computational-structures">MIT 6.004 - Computational
+				Structures</h2> 
+				
+				<p> Computational structures explores important topics that Nand2Tetris
+				skips: models of computation, cost/performance trade-offs, virtual
+				memory, caching, memory hierarchy, interrupts, scheduling, pipelining
+				and concurrency and compiler optimizations. 
+				
+				I worked through the worksheets and labs of the 2017 version of this <a
+				href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/">MIT
+				ocw course</a>.				
 
-
-				<h2 id="mit-6.004---computational-structures">MIT 6.004 - Computational Structures</h2>
-				<p>I worked through the worksheets and labs of the 2017 version of this <a
-						href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/">MIT ocw course</a> together
-					with its <a href="https://computationstructures.org">companion website</a>. Computational structures explores
-					important topics that N2T skips: models of computation, cost/performance trade-offs, virtual memory, caching,
-					memory hierarchy, interrupts, scheduling, pipelining and concurrency, compiler optimizations.</p>
-				<p>There are three major challenges in this course, completed using instructor developed tools:</p>
+				There are three major challenges in this course, completed using
+				instructor developed tools: </p>
+				
 				<ol type="1">
 					<li>Programming a Turing machine to check if parentheses are balanced using the <code>TMSim</code> Turing
 						machine simulator.</li>
 					<li>Build a minimal <a href="https://en.wikipedia.org/wiki/Reduced_instruction_set_computer">RISC</a>
-						processor called ‘Beta’ using the <code>Jade</code> circuit simulator.</li>
-					<li>Modify a teaching operating system called <code>TinyOS</code> in the <code>BSIM</code> ‘Beta’ emulator.
+						processor called "Beta" using the <code>Jade</code> circuit simulator.</li>
+					<li>Modify a teaching operating system called <code>TinyOS</code> in the <code>BSIM</code> "Beta" emulator.
 					</li>
 				</ol>
-				<p>The companion website implements all these tools using browser technologies. To see my answers to the labs in
-					your browser:</p>
+
+				<p>The <a href="https://computationstructures.org">companion
+				website</a> implements all these tools using browser technologies. To
+				see my answers to the labs in your browser:</p>
+				
 				<ol type="1">
-					<li>Right-click and select ‘Save Link as …’ on my <a
-							href="media/learning/saved_state_vecf.json">saved_state.json file</a></li>
-					<li>Navigate <a href="https://computationstructures.org/exercises/fsm/lab.html">here</a>, scroll down and
-						upload the file.<br />
+
+					<li>Right-click and select "Save Link as …" on my <code>saved_state.json</code> file <a
+							href="media/learning/saved_state_vecf.json">here</a>.</li>
+
+					<li>Navigate to the labs page <a href="https://computationstructures.org/exercises/fsm/lab.html">here</a>, scroll down and
+						upload the file.
 					</li>
+
 					<li>You can then browse to any of the labs and my answers should display.</li>
+
 				</ol>
+				
 				<h3 id="parenthesis-checking-turing-machine">Parenthesis Checking Turing Machine</h3>
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p>The video below shows a Turing machine programmed to halt on a <code>1</code> if the parenthesis on the
-							input tape are balanced and <code>0</code> if they are not. Doing it with only two states gets you full
+						<p>The next video shows a Turing machine programmed to halt on a 1 if the parenthesis on the
+							input tape are balanced and 0 if they are not. Doing it with only two states gets you full
 							marks. This was the most challenging part of the <a
-								href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a> <a
-								href="https://computationstructures.org/exercises/fsm/lab.html#">lab</a>. To see it in action, scroll
-							down and click ‘Open <code>TMSim</code> in a new window’, click ‘TMSim assemble’ and then ‘Checkoff’.</p>
+								href="https://en.wikipedia.org/wiki/Finite-state_machine">FSM</a> lab. To see it in action, load my <code>saved_state.json</code> file as described before, click <a
+								href="https://computationstructures.org/exercises/fsm/lab.html#">here</a>, scroll
+							down and click "Open <code>TMSim</code> in a new window", click "TMSim assemble" and then "Checkoff".</p>
 					</div>
 					<div class="col-4 col-12-medium">
-						<video width="100%" alt="Turing Paren Checker" controls>
+						<video class="centered full" alt="Turing Paren Checker" controls>
 							<source src="media/learning/TMSIM.mp4" type="video/mp4">
 						</video>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-8 col-12-medium">
-						<p>To do it in just two states, I developed the diagram shown below. The <em>f</em> <strong>state</strong>
-							represents ‘found’ and <em>l</em> is for ‘looking’. The <em>o</em> <strong>symbol</strong> is for ‘open’
-							and <em>s</em> is for ‘start’. Symbols <em>z</em> and <em>y</em> are arbitrarily named. The <em>l</em>
+						<p>To do it in just two states, I developed the diagram in the following image. The <em>f</em> <strong>state</strong>
+							represents "found" and <em>l</em> is for "looking". The <em>o</em> <strong>symbol</strong> is for "open"
+							and <em>s</em> is for "start". Symbols <em>z</em> and <em>y</em> are arbitrarily named. The <em>l</em>
 							<strong>motion</strong> means move the <strong>tape</strong> left, <em>r</em> is right and <em>-</em>
 							means don’t move. This corresponds to the language of TMSim as seen in the video.</p>
 					</div>
@@ -174,15 +204,15 @@
 						<p><img width="100%" src="media/learning/TuringStates.png" /></p>
 					</div>
 				</div>
-				<h3 id="build-and-optimize-the-beta-cpu">Build and Optimize the ‘Beta’ CPU</h3>
+				<h3 id="build-and-optimize-the-beta-cpu">Build and Optimize the "Beta" CPU</h3>
 				<div class="row">
 					<div class="col-8 col-12-medium">
 						<p>The final lab is <a href="https://computationstructures.org/exercises/dp/lab.html">Optimizing the
-								Beta</a> that you built in the previous labs. Here a ‘Benmark’ of 20 is considered very doable and 40
+								Beta</a> that you built in the previous labs. Here a "Benmark" of 20 is considered very doable and 40
 							requires considerable insight and investment of time. Though not considered a course requirement, I tried
-							to pipeline my design but failed. See the lab for more details. My final working design is tested in
+							to pipeline my design but failed (see lab for details). My final working design is tested in
 							<code>/user/test_v7</code> and got a benchmark of 34.66. You can also inspect the <code>Beta</code> for
-							this test looking at <code>/user/beta_6</code> and descending into its sub-components.</p>
+							this test looking at <code>/user/beta_6</code> and descending into its sub-components as shown.</p>
 					</div>
 					<div class="col-4 col-12-medium">
 						<p><img width=100% src="media/learning/beta.png" /></p>
@@ -193,7 +223,7 @@
 
 						<p>The <a href="https://computationstructures.org/exercises/tinyos/lab.html">TinyOS lab</a> provides a
 							minimal time-sharing OS written in <code>Beta</code> assembly. The provided code has two user processes:
-							one periodically prints a counter value and the other takes user input and converts it to <a
+							one periodically prints a counter value in hex and the other takes user input and converts it to <a
 								href="https://en.wikipedia.org/wiki/Pig_Latin">Pig Latin</a>. There are three design problems in this
 							lab:</p>
 						<ol type="1">
@@ -203,17 +233,21 @@
 							<li>Fix interleaving text at the console due to concurrent access by the user processes by implementing
 								locking primitives.</li>
 						</ol>
-						<p>BSIM has a schematic view that shows the assembly code being executed on the hardware and an editor mode
-							that follows along line by line as the program executes. The video below showcases these features.</p>
-						<p>The next video shows the end result of the modifications done in the TinyOS lab.</p>
+
+						<p><code>BSIM</code> has a simulation, schematic and editor views. 
+						These can show the assembly code being executing on the hardware and
+						follow along line by line in the editor view. The first video below
+						showcases these features and the second shows the end result of the
+						modifications done in the TinyOS lab.</p>
+						
 				<div class="row">
 					<div class="col-6 col-12-medium">
-						<video width="100%" alt="BSIM Feature Demo" controls>
+						<video class="centered full" alt="BSIM Feature Demo" controls>
 							<source src="media/learning/BSIMfeatures.mp4" type="video/mp4">
 						</video>
 					</div>
 					<div class="col-6 col-12-medium">
-						<video width="100%" alt="TinyOS Modifications" controls>
+						<video class="centered full" alt="TinyOS Modifications" controls>
 							<source src="media/learning/TinyOS.mp4" type="video/mp4">
 						</video>
 					</div>

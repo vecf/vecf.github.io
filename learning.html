@@ -61,21 +61,27 @@
 				<h1 id="introduction">Introduction</h1>
 
 				<p>Coming to robotics from a mechanical engineering background, I found
-				myself wanting to know more about how computers acutally work and what
+				myself wanting to know more about how computers actually work and what
 				happens under the hood of the software we use every day. The projects shown here
 				summarize some of my self-learning experiences to satisfy this
 				curiosity.</p>
 				
 				<h1 id="projects">Projects</h1>
 				<h2 id="linux-from-scratch-lfs">Linux From Scratch (LFS)</h2>
-				<p>In this project you download and compile all the separate pieces to assemble your own bootable Linux distro.
-					No coding is done in this project, but you need to be able to follow instructions, know how to debug and know
-					a bit about UNIX. I managed to finish the project and registered on their database <a
-						href="http://www.linuxfromscratch.org/cgi-bin/lfscounter.php">here</a>. My LFS id is 28548.</p>
+
+				<p>In this project, you download and compile all the separate pieces to
+				assemble your own bootable Linux distro.  No coding is done, but you
+				need to be able to follow instructions, know how to debug and know a bit
+				about UNIX. I finished the project and registered on their
+				database <a
+				href="http://www.linuxfromscratch.org/cgi-bin/lfscounter.php">here</a>.
+				My LFS id is 28548.</p>
+				
 				<h2 id="modification">6502 modification</h2>
+
 				<div class="row">
 					<div class="col-10 col-12-medium">
-						<p>The 6502 is praised for it’s simplicity and remembered for the impact it had on personal computing, so I
+						<p>The 6502 is praised for its simplicity and remembered for the impact it had on personal computing, so I
 							decided to work though this tiny e-book I found called <a
 								href="https://skilldrick.github.io/easy6502/">Easy 6502</a>. After reading the little book, I modified
 							the snake game presented there to reinforce what I had learnt. The modifications make <code>snake</code>’s
@@ -94,23 +100,27 @@
 				</div>
 				<h2 id="from-nand-to-tetris">From NAND to Tetris</h2>
 
-						<p>After playing with 6502, I was confident enough to try <a
-								href="https://www.nand2tetris.org/">Nand2Tetris</a>. The subtitle “Building a Modern Computer From First
-							Principles”, is actually just the first half of the course! In part 1, using only the <a
-								href="https://en.wikipedia.org/wiki/NAND_gate">NAND</a> gate and <a
-								href="https://en.wikipedia.org/wiki/Flip-flop_%28electronics%29">DFF</a>’s, you build the chips to
-							create the <code>Hack</code> computer: an educational (<a
-								href="https://en.wikipedia.org/wiki/Minimal_instruction_set_computer">MISC</a>) architecture. This is
-							done in an educational hardware description language provided with pre-written tests to make development
-							incremental. By the end of the course you write your own assembler for <code>Hack</code> in the
-							programming language of your choice.</p>
+<p>After playing with 6502, I was confident enough to try <a href="https://www.nand2tetris.org/">Nand2Tetris</a>. The
+	subtitle
+	“Building a Modern Computer From First Principles” is actually just
+	the first half of the course! In part 1, using only the <a href="https://en.wikipedia.org/wiki/NAND_gate">NAND</a>
+	gate and <a href="https://en.wikipedia.org/wiki/Flip-flop_%28electronics%29">DFF</a>’s,
+	you build the chips to create the <code>Hack</code> computer: an
+	educational (<a href="https://en.wikipedia.org/wiki/Minimal_instruction_set_computer">MISC</a>)
+	architecture. This is done in an educational hardware description
+	language provided with pre-written tests to make development
+	incremental. By the end of the course you write your own assembler
+	for <code>Hack</code> in the programming language of your
+	choice.</p>
 
-						<p>In part 2, you build a compiler targeting <code>Hack</code> for the <code>Jack</code> object-oriented
-							programming language which the authors created. My compiler and assembler were both written in <code>Python</code>. You also get to
-							implement any project of your choice in the <code>Jack</code> language to learn how it works. Typically,
-							students go for <code>Tetris</code>, hence the name Nand2Tetris, but I chose to implement <code>snake</code>. In the final
-							project, you implement the system calls provided by a bare-bones “operating system” in <code>Jack</code>.
-						</p>
+<p>In part 2, you build a compiler targeting <code>Hack</code> for the
+<code>Jack</code> object-oriented programming language which the authors
+created. My compiler and assembler were both written in <code>Python</code>. You
+also get to implement any project of your choice in the <code>Jack</code>
+language to learn how it works. Typically, students go for <code>Tetris</code>,
+hence the name Nand2Tetris, but I chose to implement <code>snake</code>. In the
+final project, you implement the system calls provided by a bare bones
+“operating system” in <code>Jack</code>.  </p>
 
 				<div class="row">
 					<div class="col-8 col-12-medium">
@@ -120,7 +130,7 @@
 							loading snake without the self-written OS binaries, the emulator offers
 							to provide built-in versions. Then, when loading a version with snake
 							and the system binaries, the emulator immediately loads the program.
-							Instead of the direction keys I used <a href="https://en.wikipedia.org/wiki/Vi"><code>vi</code></a> keys because
+							Instead of the direction keys, I used <a href="https://en.wikipedia.org/wiki/Vi"><code>vi</code></a> keys because
 							I was the target audience of the game. You can set the speed and length
 							of snake at the beginning of the game to help debug during development.
 							I also implemented playing the game at different sizes as a programming
@@ -142,7 +152,7 @@
 				<h2 id="mit-6.004---computational-structures">MIT 6.004 - Computational
 				Structures</h2> 
 				
-				<p> Computational structures explores important topics that Nand2Tetris
+				<p> The Computational Structures course explores important topics that Nand2Tetris
 				skips: models of computation, cost/performance trade-offs, virtual
 				memory, caching, memory hierarchy, interrupts, scheduling, pipelining
 				and concurrency and compiler optimizations. 

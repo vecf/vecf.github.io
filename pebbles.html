@@ -85,17 +85,18 @@
 						physical locations. This example is not as far fetched as it sounds:
 						thousands of robots are delivering packages from storage to packing
 						stations in warehouses every day and Kiva Systems is the company
-						that pioneered their use. It’s also not new: Staples was the first
-						company to go live with a Kiva system in 2006! A 2016 report
-						estimated that Amazon was operating ~30k units and by 2022 <a
+						that pioneered their use, before being acquired by Amazon in 2012.
+						It’s also not new: Staples was the first company to go live with a
+						Kiva system in 2006! A 2016 report estimated that Amazon was
+						operating ~30k units and by 2022 <a
 						href="https://www.aboutamazon.com/news/operations/10-years-of-amazon-robotics-how-robots-help-sort-packages-move-product-and-improve-safety">
-						Amazon reported</a> 520,000 world-wide. The next two images show the layout
-						of a typical robotic distribution center and the robots they employ.
-						Robots pick up and deliver shelves of inventory to pick/pack
-						workers. See the <a
+						Amazon reported</a> 520,000 world-wide. The next two images show the
+						layout of a typical robotic distribution center and the robots they
+						employ.  Robots pick up and deliver shelves of inventory to
+						pick/pack workers. See the <a
 						href="https://dl.acm.org/doi/abs/10.5555/2908675.2908681">image
 						source</a> for more information.  </p>
-
+						
 					</div>
 
 					<div class="col-2 col-12-medium">
@@ -257,7 +258,7 @@
 						to remain in place while ordering others to move. This ensures that
 						high priority robots decrease their distance from their target
 						monotonically, which in turn ensures that progress is being made.
-						Idle robots don’t send instructions, but receive them. At the end of
+						Idle robots don’t send instructions but receive them. At the end of
 						this phase, each robot selects the highest priority instruction and
 						forwards it as a node access request, maintaining the original
 						sender’s priority.</p>
@@ -370,7 +371,7 @@
 				simulated time, 144 grid nodes and up to 143 robots. The legend
 				indicates experiments for grids with different aspect ratios. The
 				maximum number of completed tasks always occurs for around 30 robots
-				independent of the grid aspect ratio. The simulations were run headless
+				independently of the grid aspect ratio. The simulations were run headless
 				and no deadlocks or collisions occurred, that’s 1001 flawless
 				simulations!</p> 
 				
@@ -388,8 +389,8 @@
 				
 				<h1 id="conclusion">Conclusion</h1>
 
-				<p>The relaxations on PMOG allows robots to deliver payloads without
-				collisions or deadlocks, in continuous asynchronous time and require
+				<p>The relaxations on PMOG allow robots to deliver payloads without
+				collisions or deadlocks in continuous asynchronous time, requiring
 				comparatively little computation. The computation can also easily be
 				distributed among multiple agents without requiring central
 				coordination. These were the extents of my research scope and there is

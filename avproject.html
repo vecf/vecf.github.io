@@ -65,38 +65,38 @@
 				tractors (or ‘port haulers’ colloquially) can be converted into
 				autonomous vehicles in-house. These vehicles haul container carrying
 				trailers from quayside to storage yard in the ports. The company was
-				already developing a non-autonomous
-				port hauler, but the team anticipated that autonomy would eventually
-				become an entry to market requirement and I initiated this project. By
-				developing an autonomy kit, retro-fitting would also be made possible on
-				older vehicles.</p>
+				already developing a non-autonomous port hauler, but the team
+				anticipated that autonomy would eventually become an entry to market
+				requirement, so I decided to initiate this project. By developing an
+				autonomy kit, retrofitting would also be made possible on older
+				vehicles.</p>
 				
 				<h1 id="software-development-approach">Software Development
 				Approach</h1>
 				
-				<p>Early on a decision had to be made whether to develop from scratch,
-				or leverage open source. I was on the project full-time, there was
-				another engineer working about half his time on this project and others
-				assisting on an ad-hoc basis. Given the small team, limited resources
-				and the availability of the open source <a href="https://ros.org/">Robot
+				<p>Early on a decision had to be made whether to develop from scratch or
+				leverage open source. I was on the project full-time, while another 
+				engineer had half of his time dedicated to this project and others
+				assisted on an ad-hoc basis. Given the small team, limited resources and
+				the availability of the open source <a href="https://ros.org/">Robot
 				Operating System (ROS) framework</a>, I decided to pursue the open
 				source route.  This decision yielded rapid progress, greater number of
 				features and higher quality software.  Exposure to an established
 				codebase and community yielded secondary benefits such as adoption of
-				best practices, broader applicability and better code maintainability.</p>
+				best practices, broader applicability, and better code
+				maintainability.</p>
 				
 				<h1 id="hardware-architecture-and-approach">Hardware Architecture and
 				Approach</h1>
 				
 				<p>As technical lead of the project, I chose to demonstrate the
-				feasibility of in-house development using a scale prototype. In deciding
-				on the system architecture and design philosophy, to keep costs low and
-				development velocity high, standard off-the-shelf components such as
-				remote controlled (RC) vehicles and hobby-grade microcontrollers were
-				used. The first image below shows a first iteration of the prototype
-				vehicle.  Thanks to hardware modularity, this prototype was later easily
-				refactored to more accurately mimic the real vehicle as shown in the
-				following images (see <a
+				feasibility of in-house development using a scale prototype. To keep
+				costs low and development velocity high, standard off-the-shelf
+				components such as remote controlled (RC) vehicles and hobby-grade
+				microcontrollers were used for prototyping. The first image below shows a first
+				iteration of the prototype vehicle.  Thanks to hardware modularity, this
+				prototype was later easily refactored to mimic the real
+				vehicle more accurately as shown in the following images (see <a
 				href="https://mobile.twitter.com/te_transnet/status/1333689542969331714">
 				here</a> for comparison). </p>
 				
@@ -144,7 +144,7 @@
 				and control code had already been set up and tested in simulation.
 				<code>Gazebo</code> simulated the vehicle odometry, laser scanner, <a
 				href="https://en.wikipedia.org/wiki/Inertial_measurement_unit">IMU</a>
-				and camera that were on the vehicle, in some cases, long before the
+				and camera that were on the vehicle; in some cases, long before the
 				physical hardware was available. Creating the simulations required
 				developing <code>.urdf</code> files describing the robot hardware. I
 				parameterized this as much as possible using <a
@@ -186,8 +186,8 @@
 				
 				<p>The navigation stack provides a default global planner, which was
 				good enough for our needs. This planner doesn’t take into account the
-				vehicle kinematics, and is performed against a static costmap. The
-				default local planner however, was replaced with the Timed Elastic Band
+				vehicle kinematics and is performed against a static costmap. The
+				default local planner, however, was replaced with the Timed Elastic Band
 				local planner (<a
 				href="http://wiki.ros.org/teb_local_planner"><code>teb_local_planner</code></a>),
 				which takes the kinematics of our <a
@@ -217,7 +217,7 @@
 				
 				<p>The main controller runs <code>linux</code> to support
 				<code>ROS</code> and was not very powerful. This made it inadequate for
-				the real-time nature of controlling motor speed. Instead a dedicated
+				the real-time nature of controlling motor speed. Instead, a dedicated
 				low-level controller was used which ran a <a href="https://en.wikipedia.org/wiki/PID_controller">PID</a> loop and handled encoder
 				pulses for speed feedback. On the main controller, the bespoke
 				interfaces for <a
@@ -225,14 +225,14 @@
 				developed to pass speed and steering angle data back for integration
 				into pose estimates. Getting odometry data from the standard RC motor
 				encoder required splicing its signal cable and adding interrupt code to
-				the low-level controller. For steering angle feedback I soldered extra
-				wires on to the servo motor control pot to read its values.  </p>
+				the low-level controller. For steering angle feedback, I soldered extra
+				wires onto the servo motor control pot to read its values.  </p>
 				
 				<p>The main controller sent control commands to the low-level controller
 				using <a
 				href="http://wiki.ros.org/rosserial"><code>rosserial</code></a>. I could
 				not get the <code>C++</code> <code>rosserial_server</code> to work and
-				found the codebase stale at the time. Instead we used the
+				found the codebase stale at the time. Instead, we used the
 				<code>rosserial_python</code> interface, which worked well from the
 				get-go. Unfortunately, troubleshooting revealed that <code>teb_local_planner</code> combined with online localization and the
 				high overhead of the <code>rosserial_python</code> package was too much for the embedded <code>ROS</code> controller. </p>			

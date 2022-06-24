@@ -2323,7 +2323,6 @@ input, select, textarea {
 		border: 0;
 		display: inline-block;
 		position: relative;
-		text-align:center;
 	}
 
 		.image img {
@@ -3362,7 +3361,7 @@ input, select, textarea {
 /* Video */
 
 video.centered {
-	margin: 0em auto 2em;
+	margin: 0em auto 0em;
 	display: block;
 }
 
@@ -3372,4 +3371,14 @@ video.centered {
 
 .full {
 	width: 100%;
+}
+
+/* Figure */
+
+figcaption {
+	text-align: center;
+}
+
+figure {
+	margin-bottom: 1em;
 }
